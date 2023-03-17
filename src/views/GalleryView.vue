@@ -1,5 +1,20 @@
 <template>
-  <div class="about">
-    <h1>This is an gallery page</h1>
+  <div class="gallery">
+    <ImageGrid />
   </div>
 </template>
+
+<script>
+import ImageGrid from "@/components/atoms/ImageGrid.vue";
+
+export default {
+  name: "GalleryView",
+  components: { ImageGrid },
+};
+</script>
+
+<style lang="scss" scoped>
+.gallery {
+  padding: 22px;
+}
+</style>
