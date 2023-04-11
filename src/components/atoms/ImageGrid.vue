@@ -5,33 +5,65 @@
       :key="index"
       class="gallery-grid-item"
     >
-      <img :src="require(`@/assets/images/${image}`)" alt="" />
+      <ImageInfoModal
+        v-if="showInfo === index"
+        :image="image"
+        :info="filterImgInfoByKey(image)"
+        @close-info="closeInfoModal"
+      />
+      <FullImageModal :imgNum="imgId" />
+      <img :src="require(`@/assets/images/${image}.jpg`)" />
       <i class="fa-solid fa-shirt shirt"></i>
-      <i class="fa-solid fa-eye eye"></i>
-      <i class="fa-solid fa-circle-info info"></i>
+      <i class="fa-solid fa-eye eye" @click="showFullImage(image)"></i>
+      <i
+        class="fa-solid fa-circle-info info"
+        @click="toggleInfoModal(index)"
+      ></i>
     </div>
   </div>
 </template>
 
 <script>
+import ImageInfoModal from "./ImageInfoModal.vue";
+import FullImageModal from "./FullImageModal.vue";
+import { IMG_INFO } from "@/utils/image_info.js";
+
 export default {
   name: "GalleryGrid",
+  components: {
+    ImageInfoModal,
+    FullImageModal,
+  },
   data() {
     return {
-      images: [
-        "1.jpg",
-        "2.jpg",
-        "3.jpg",
-        "4.jpg",
-        "5.jpg",
-        "6.jpg",
-        "7.jpg",
-        "8.jpg",
-        "9.jpg",
-        "10.jpg",
-        "11.jpg",
-      ],
+      showInfo: null,
+      images: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
+      imgId: "1",
     };
+  },
+  computed: {},
+  methods: {
+    filterImgInfoByKey(key) {
+      let filteredImgInfo = null;
+      for (const imgKey in IMG_INFO) {
+        if (imgKey === key) {
+          filteredImgInfo = IMG_INFO[imgKey];
+          break;
+        }
+      }
+      return filteredImgInfo;
+    },
+    toggleInfoModal(index) {
+      this.showInfo = this.showInfo === index ? null : index;
+    },
+
+    closeInfoModal() {
+      this.showInfo = null;
+    },
+    showFullImage(image) {
+      this.imgId = image;
+      this.$bvModal.show("full-image");
+    },
   },
 };
 </script>
@@ -57,6 +89,7 @@ export default {
     }
   }
 }
+
 i {
   display: none;
   position: absolute;
