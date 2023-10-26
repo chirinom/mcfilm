@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: "PictureModal",
+  name: 'PictureModal',
   props: {
     imgNum: {
       type: [String, Number],
@@ -30,10 +30,10 @@ export default {
   },
   methods: {
     closeModal() {
-      this.$bvModal.hide("full-image");
+      this.$bvModal.hide('full-image')
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

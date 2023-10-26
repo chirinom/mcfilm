@@ -13,7 +13,9 @@
       />
       <FullImageModal :imgNum="imgId" />
       <img :src="require(`@/assets/images/${image}.jpg`)" />
-      <i class="fa-solid fa-shirt shirt"></i>
+      <router-link to="/shop">
+        <i class="fa-solid fa-shirt shop"></i>
+      </router-link>
       <i class="fa-solid fa-eye eye" @click="showFullImage(image)"></i>
       <i
         class="fa-solid fa-circle-info info"
@@ -24,12 +26,12 @@
 </template>
 
 <script>
-import ImageInfoModal from "./ImageInfoModal.vue";
-import FullImageModal from "./FullImageModal.vue";
-import { IMG_INFO } from "@/utils/image_info.js";
+import ImageInfoModal from './ImageInfoModal.vue'
+import FullImageModal from './FullImageModal.vue'
+import { IMG_INFO } from '@/utils/image_info.js'
 
 export default {
-  name: "GalleryGrid",
+  name: 'GalleryGrid',
   components: {
     ImageInfoModal,
     FullImageModal,
@@ -37,35 +39,34 @@ export default {
   data() {
     return {
       showInfo: null,
-      images: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"],
-      imgId: "1",
-    };
+      images: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'],
+      imgId: '1',
+    }
   },
   computed: {},
   methods: {
     filterImgInfoByKey(key) {
-      let filteredImgInfo = null;
+      let filteredImgInfo = null
       for (const imgKey in IMG_INFO) {
         if (imgKey === key) {
-          filteredImgInfo = IMG_INFO[imgKey];
-          break;
+          filteredImgInfo = IMG_INFO[imgKey]
+          break
         }
       }
-      return filteredImgInfo;
+      return filteredImgInfo
     },
     toggleInfoModal(index) {
-      this.showInfo = this.showInfo === index ? null : index;
+      this.showInfo = this.showInfo === index ? null : index
     },
-
     closeInfoModal() {
-      this.showInfo = null;
+      this.showInfo = null
     },
     showFullImage(image) {
-      this.imgId = image;
-      this.$bvModal.show("full-image");
+      this.imgId = image
+      this.$bvModal.show('full-image')
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -101,7 +102,7 @@ i {
   }
 }
 
-.shirt {
+.shop {
   bottom: 33px;
   left: 22px;
 }

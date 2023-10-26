@@ -8,19 +8,19 @@
 
 <script>
 export default {
-  name: "ImageInfoModal",
+  name: 'ImageInfoModal',
   props: {
     info: {
       type: String,
-      default: "",
+      default: '',
     },
   },
   methods: {
     hideInfo() {
-      this.$emit("show-info");
+      this.$emit('show-info')
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>

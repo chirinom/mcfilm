@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import ImageGrid from "@/components/atoms/ImageGrid.vue";
+import ImageGrid from '@/components/atoms/ImageGrid.vue'
 
 export default {
-  name: "GalleryView",
+  name: 'GalleryView',
   components: { ImageGrid },
-};
+}
 </script>
 
 <style lang="scss" scoped>
