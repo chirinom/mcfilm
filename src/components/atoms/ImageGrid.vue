@@ -22,7 +22,6 @@
         @click="toggleInfoModal(index)"
       ></i>
       <img :src="require(`@/assets/images/${image}`)" alt="" />
-      <!-- TODO: REMOVE THIS -->
     </div>
   </div>
 </template>
