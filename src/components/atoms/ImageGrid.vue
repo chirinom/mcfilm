@@ -21,7 +21,7 @@
         class="fa-solid fa-circle-info info"
         @click="toggleInfoModal(index)"
       ></i>
-      <img :src="require(`@/assets/images/${image}`)" alt="" />
+      <img :src="require(`@/assets/images/${image}.jpg`)" alt="" />
     </div>
   </div>
 </template>
