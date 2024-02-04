@@ -1,10 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/">Home</router-link>
-      <!-- <router-link to="/about">About</router-link> -->
-      <router-link to="/gallery">Gallery</router-link>
-      <!-- <router-link to="/contact">Contact</router-link> -->
+      <router-link to="/">Gallery</router-link>
+      <router-link to="/shop">Shop</router-link>
+      <router-link to="/about">About</router-link>
     </nav>
     <router-view />
   </div>
@@ -12,22 +11,27 @@
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
 }
 
 nav {
-  padding: 30px;
+  padding: 22px;
 
   a {
-    font-weight: bold;
-    color: #2c3e50;
+    font-size: 16px;
+    font-weight: 500;
+    color: $light-grey;
+    padding: 33px;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: $grey;
+    }
+    &:hover {
+      text-decoration: none;
+      color: $grey;
     }
   }
 }

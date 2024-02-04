@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ShopView from '../views/ShopView.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: HomeView,
+    component: () => import('../views/HomeView.vue'),
   },
   {
     path: '/about',
@@ -17,15 +15,9 @@ const routes = [
     component: () => import('../views/AboutView.vue'),
   },
   {
-    path: '/gallery',
-    name: 'gallery',
-    component: () => import('../views/GalleryView.vue'),
-    children: [
-      {
-        path: 'shop',
-        component: ShopView,
-      },
-    ],
+    path: '/shop',
+    name: 'shop',
+    component: () => import('../views/ShopView.vue'),
   },
   {
     path: '/contact',

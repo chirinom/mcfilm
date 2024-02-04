@@ -13,9 +13,7 @@
       />
       <FullImageModal :imgNum="imgId" />
       <img :src="require(`@/assets/images/${image}.jpg`)" />
-      <router-link to="/shop">
-        <i class="fa-solid fa-shirt shop"></i>
-      </router-link>
+      <i class="fa-solid fa-cart-plus shop" @click="openCreateOrderModal"></i>
       <i class="fa-solid fa-eye eye" @click="showFullImage(image)"></i>
       <i
         class="fa-solid fa-circle-info info"
@@ -23,12 +21,14 @@
       ></i>
       <img :src="require(`@/assets/images/${image}.jpg`)" alt="" />
     </div>
+    <OrderModal/>
   </div>
 </template>
 
 <script>
 import ImageInfoModal from './ImageInfoModal.vue'
 import FullImageModal from './FullImageModal.vue'
+import OrderModal from './OrderModal.vue'
 import { IMG_INFO } from '@/utils/image_info.js'
 
 export default {
@@ -36,6 +36,7 @@ export default {
   components: {
     ImageInfoModal,
     FullImageModal,
+    OrderModal
   },
   data() {
     return {
@@ -66,6 +67,9 @@ export default {
       this.imgId = image
       this.$bvModal.show('full-image')
     },
+    openCreateOrderModal() {
+      this.$bvModal.show('order-modal')
+    }
   },
 }
 </script>
