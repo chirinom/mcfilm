@@ -1,10 +1,6 @@
 <template>
   <div class="gallery-grid">
-    <div
-      v-for="(image, index) in images"
-      :key="index"
-      class="gallery-grid-item"
-    >
+    <div v-for="(image, index) in images" :key="index" class="gallery-grid-item">
       <ImageInfoModal
         v-if="showInfo === index"
         :image="image"
@@ -15,13 +11,11 @@
       <img :src="require(`@/assets/images/${image}.jpg`)" />
       <i class="fa-solid fa-cart-plus shop" @click="openCreateOrderModal"></i>
       <i class="fa-solid fa-eye eye" @click="showFullImage(image)"></i>
-      <i
-        class="fa-solid fa-circle-info info"
-        @click="toggleInfoModal(index)"
-      ></i>
+      <i class="fa-solid fa-circle-info info" @click="toggleInfoModal(index)"></i>
       <img :src="require(`@/assets/images/${image}.jpg`)" alt="" />
+      {{ image }}
+      <OrderModal :imgInfo="image" />
     </div>
-    <OrderModal/>
   </div>
 </template>
 
@@ -36,7 +30,7 @@ export default {
   components: {
     ImageInfoModal,
     FullImageModal,
-    OrderModal
+    OrderModal,
   },
   data() {
     return {
@@ -69,7 +63,7 @@ export default {
     },
     openCreateOrderModal() {
       this.$bvModal.show('order-modal')
-    }
+    },
   },
 }
 </script>

@@ -1,21 +1,16 @@
 <template>
-    <div
-        class="card m-4"
-        :class="{ disabled: disabled }"
-        @click="click"
-    >
-        <div class="card__image">
-            <!-- <img
+  <div class="card m-4" :class="{ disabled: disabled }" @click="click">
+    <div class="card__image">
+      <!-- <img
                 class="card__image"
                 :src="require(`@/assets/images/${imgSrc}.jpg`)"
                 alt="Picture in card"
             /> -->
-            
-        </div>
-        <div class="card__title">{{ title }}</div>
-        <div class="card__subtitle">{{ subtitle }}</div>
-        <button class="card__button"><i class="fa-solid fa-chevron-right"></i></button>
     </div>
+    <div class="card__title">{{ title }}</div>
+    <div class="card__subtitle">{{ subtitle }}</div>
+    <button class="card__button"><i class="fa-solid fa-chevron-right"></i></button>
+  </div>
 </template>
 
 <script>
@@ -58,38 +53,38 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    cursor: pointer;
-    width: 226px;
-    min-height: 266px;
-    border-radius: 12px;
-    align-items: center;
-    justify-content: space-around;
-    padding-bottom: 30px;
-    display: flex;
+  cursor: pointer;
+  width: 226px;
+  min-height: 266px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 30px;
+  display: flex;
 
-    &__subtitle {
-        margin: 0 5px 0 5px;
-        text-align: center;
-    }
-    &__image {
-        margin-top: 10px;
-        width: 78.81px;
-        height: 78.81px;
-    }
-    &__subtitle {
-        color: $grey;
-    }
-    &__button {
-        border-radius: 50%;
-        border: none;
-        height: 44px;
-        width: 44px;
-    }
+  &__subtitle {
+    margin: 0 5px 0 5px;
+    text-align: center;
+  }
+  &__image {
+    margin-top: 10px;
+    width: 78.81px;
+    height: 78.81px;
+  }
+  &__subtitle {
+    color: $grey;
+  }
+  &__button {
+    border-radius: 50%;
+    border: none;
+    height: 44px;
+    width: 44px;
+  }
 }
 .card.disabled {
-    cursor: default;
-    &__image {
-        filter: grayscale(100%);
-    }
+  cursor: default;
+  &__image {
+    filter: grayscale(100%);
+  }
 }
 </style>

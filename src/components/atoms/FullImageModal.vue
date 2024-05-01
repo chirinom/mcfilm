@@ -1,15 +1,6 @@
 <template>
-  <b-modal
-    id="full-image"
-    class="full-image"
-    :title="null"
-    hide-footer
-    :centered="true"
-  >
-    <div
-      class="d-flex justify-content-center align-items-center img-wrapper"
-      style="padding: 22px"
-    >
+  <b-modal id="full-image" class="full-image" :title="null" hide-footer :centered="true">
+    <div class="d-flex justify-content-center align-items-center img-wrapper" style="padding: 22px">
       <img :src="require(`@/assets/images/${imgNum}.jpg`)" class="w-100" />
     </div>
     <template #modal-header>

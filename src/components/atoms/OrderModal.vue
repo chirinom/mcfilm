@@ -11,7 +11,12 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'OrderModal',
   components: {
-    OrderTypeForm
+    OrderTypeForm,
+  },
+  props: {
+    imgInfo: {
+      type: [Object, String],
+    },
   },
   data() {
     return {
@@ -24,7 +29,7 @@ export default {
         {
           value: 'Framed Photographs',
           title: 'Fill your favorite spaces with art',
-          disabled: false
+          disabled: false,
         },
       ],
     }
@@ -38,8 +43,8 @@ export default {
       this.saveOrderType(val)
       this.orderNextStep()
       // this.$emit('next')
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -54,5 +59,11 @@ export default {
 <style lang="scss">
 .modal-body {
   padding: 80px;
+}
+.model-content {
+  border: none;
+}
+.modal-backdrop {
+  background-color: rgb(200 200 200 / 28%);
 }
 </style>

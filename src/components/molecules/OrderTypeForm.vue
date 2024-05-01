@@ -1,68 +1,75 @@
 <template>
-    <div>
-        <h4 class="header">Select product type</h4>
-        <div class="product-type-form">
-            <FormVerticalCard
-            v-for="(option, index) in options"
-            :key="index" :value="option.value"
-            :title="option.value"
-            :subtitle="option.title"
-            @click="valueSelected"
-            />
+  <div>
+    <h2>Request Form</h2>
+    <form @submit.prevent="submitForm">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="formData.name" required />
+      </div>
+      <div>
+        <label for="size">Size:</label>
+        <select id="size" v-model="formData.size" @change="onSizeChange" required>
+          <option value="small">Small (40cm x 60cm)</option>
+          <option value="medium">Medium (60cm x 80cm)</option>
+          <option value="large">Large (80cm x 110cm)</option>
+          <option value="custom">Custom</option>
+        </select>
+        <div v-if="formData.size === 'custom'">
+          <label for="customWidth">Width (cm):</label>
+          <input type="number" id="customWidth" v-model="formData.customWidth" required />
+          <label for="customHeight">Height (cm):</label>
+          <input type="number" id="customHeight" v-model="formData.customHeight" required />
         </div>
-    </div>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" v-model="formData.email" required />
+      </div>
+      <div>
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" v-model="formData.phone" required />
+      </div>
+      <button type="submit">Send Request</button>
+    </form>
+  </div>
 </template>
+
 <script>
-import FormVerticalCard from '@/components/atoms/FormVerticalCard.vue'
-import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'OrderModal',
-  components: {
-    FormVerticalCard
-  },
   data() {
     return {
-      options: [
-        {
-          value: 'Clothing',
-          title: 'Get your t-shirts and Hoodies',
-          disabled: false,
-        },
-        {
-          value: 'Framed Photographs',
-          title: 'Fill your favorite spaces with art',
-          disabled: false
-        },
-      ],
+      formData: {
+        name: '',
+        size: 'small',
+        customWidth: '',
+        customHeight: '',
+        email: '',
+        phone: '',
+      },
     }
-  },
-  computed: {
-    ...mapGetters(['orderType', 'orderActiveStep']),
   },
   methods: {
-    ...mapActions(['saveOrderType', 'orderNextStep']),
-    valueSelected(val) {
-      this.saveOrderType(val)
-      this.orderNextStep()
-      // this.$emit('next')
-    }
-  }
+    submitForm() {
+      console.log('Form submitted:', this.formData)
+    },
+    onSizeChange() {
+      if (this.formData.size !== 'custom') {
+        this.formData.customWidth = ''
+        this.formData.customHeight = ''
+      }
+    },
+  },
 }
 </script>
 
-<style scoped lang="scss">
-.header {
-    text-align: center;
+<style scoped>
+form {
+  max-width: 400px;
+  margin: auto;
 }
-.product-type-form {
-  display: flex;
-  justify-content: center;
-  padding: 33px 0;
-}
-</style>
 
-<style lang="scss">
-.modal-body {
-  padding: 80px;
+label {
+  display: block;
+  margin-bottom: 5px;
 }
 </style>

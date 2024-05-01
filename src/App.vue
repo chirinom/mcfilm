@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Gallery</router-link>
-      <router-link to="/shop">Shop</router-link>
-      <router-link to="/about">About</router-link>
-    </nav>
+    <PrimaryNavbar />
     <router-view />
   </div>
 </template>
+
+<script>
+import PrimaryNavbar from './components/molecules/PrimaryNavbar.vue'
+
+export default {
+  name: 'App',
+  components: {
+    PrimaryNavbar,
+  },
+}
+</script>
 
 <style lang="scss">
 #app {
@@ -19,6 +26,7 @@
 
 nav {
   padding: 22px;
+  display: flex;
 
   a {
     font-size: 16px;
